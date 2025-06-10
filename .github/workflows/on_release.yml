@@ -8,6 +8,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    env:
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: databricks/setup-cli@main 
