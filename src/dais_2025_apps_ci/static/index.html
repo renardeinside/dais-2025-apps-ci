@@ -17,7 +17,7 @@
     async function fetchVersion() {
       const base = window.location.origin;
       try {
-        const res = await fetch(`${base}/api/version`);
+        const res = await fetch(`${base}/api/info`);
         const json = await res.json();
         document.getElementById("version").textContent = `Version: ${json.version}`;
       } catch (e) {
