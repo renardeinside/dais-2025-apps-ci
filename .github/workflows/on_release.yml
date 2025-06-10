@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main 
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Sync the project
+        run: uv sync --locked --dev
+    
+      - name: Build the wheel
+        run: uv build --wheel
+    
+      
+      - name: Deploy to Databricks
+        run: databricks bundle deploy 
+      
+      - name: Run the new version of the app
+        run: databricks bundle run dais2025-apps-ci
