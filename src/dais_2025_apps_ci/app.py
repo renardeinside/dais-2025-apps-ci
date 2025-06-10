@@ -11,10 +11,7 @@ app = FastAPI(
     version=version,
     title="DAIS 2025 Apps CI",
     description="A FastAPI application demonstrating CI/CD for Databricks Apps.",
-    contact={
-        "name": "Ivan Trusov",
-        "url": "https://renardeinside.github.io/"
-    },
+    contact={"name": "Ivan Trusov", "url": "https://renardeinside.github.io/"},
 )
 
 static_path = Path(__file__).parent / "static"
