@@ -1,1 +1,1 @@
-command: uvicorn dais_2025_apps_ci.app:app
+command: ["uvicorn", "dais_2025_apps_ci.app:app"]
