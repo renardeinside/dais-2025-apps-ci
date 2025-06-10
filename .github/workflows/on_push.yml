@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+  push:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@main 
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Sync the project
+        run: uv sync --locked --dev
+    
+      - name: Run lint checks
+        run: make lint
+
+      - name: Run unit tests
+        run: uv run pytest tests
