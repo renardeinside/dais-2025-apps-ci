@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.build/
+.databricks
+
+# version file
+src/dais_2025_apps_ci/_version.py
+
+# Mac
+.DS_Store

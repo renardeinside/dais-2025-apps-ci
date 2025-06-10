@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CI/CD Example Deployment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+    async function fetchVersion() {
+      const base = window.location.origin;
+      try {
+        const res = await fetch(`${base}/api/version`);
+        const json = await res.json();
+        document.getElementById("version").textContent = `Version: ${json.version}`;
+      } catch (e) {
+        document.getElementById("version").textContent = "Version: unknown";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchVersion);
+  </script>
+</head>
+<body class="h-full flex items-center justify-center">
+  <div class="text-center px-4">
+    <div class="flex justify-center mb-6">
+      <img
+        src="https://cdn.bfldr.com/9AYANS2F/at/k8bgnnxhb4bggjk88r4x9snf/databricks-symbol-color.svg?auto=webp&format=png"
+        alt="Databricks Logo"
+        class="w-20 h-20"
+      />
+    </div>
+    <h1 class="text-4xl font-bold mb-4">🚀 CI/CD Deployment Example</h1>
+    <p class="text-lg text-gray-300 mb-6">
+      This page demonstrates a live deployment pipeline using automated CI/CD.
+    </p>
+    <p id="version" class="text-sm text-gray-400">Loading version...</p>
+  </div>
+</body>
+</html>
