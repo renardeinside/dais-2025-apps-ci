@@ -1,6 +1,6 @@
 [project]
 name = "dais-2025-apps-ci"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 authors = [
